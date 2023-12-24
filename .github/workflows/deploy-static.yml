@@ -16,7 +16,7 @@ jobs:
           node-version: "20.x"
 
       - name: Build asset
-        run: npm ci && npm run build
+        run: npm install && npm run build
 
       - uses: keithweaver/aws-s3-github-action@v1.0.0
         name: Copy build
