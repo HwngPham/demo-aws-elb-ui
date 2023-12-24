@@ -1,9 +1,9 @@
 import { AspectRatio, Button, Card, CardContent, Typography } from "@mui/joy";
 import { Post } from "../utils/types";
-import { sortImageByCreatedAt } from "../utils";
+import { sortByCreatedAt } from "../utils";
 
 export const PostItem = ({ id, content, title, images }: Post) => {
-  const latestImage = sortImageByCreatedAt(images ?? [])[0]?.url;
+  const latestImage = sortByCreatedAt(images ?? [])[0]?.url;
 
   return (
     <Card sx={{ width: 320 }}>

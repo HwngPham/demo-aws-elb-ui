@@ -8,8 +8,9 @@ export const createPost = async (payload: Record<string, any>) => {
       body: JSON.stringify(payload),
     });
 
-    console.log(res);
-    return res.json();
+    const data = await res.json();
+    console.log(data);
+    return data.result ?? {};
   } catch (e) {
     console.error(e);
     return null;

@@ -1,25 +1,49 @@
-import { Button, CircularProgress, Container, Input } from "@mui/joy";
+import { Button, CircularProgress, Container, Input, Snackbar } from "@mui/joy";
 import { useState } from "react";
 import { Layout } from "../components/Layout";
+import { createPost, uploadFile } from "../services";
+
+const initState = {
+  title: "",
+  content: "",
+};
 
 export const CreatPost = () => {
-  const [inputs, setInputs] = useState<Record<string, any>>({
-    title: "",
-    content: "",
-    file: null,
-  });
+  const [inputs, setInputs] = useState<Record<string, any>>(initState);
+  const [file, setFile] = useState<File | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [notiText, setNotitext] = useState<string>("");
 
   const onChange = (e: any) => {
     const { name, value } = e.target;
     setInputs({ ...inputs, [name]: value });
   };
 
-  const onSubmit = (e: any) => {
+  const onFileChange = (e: any) => {
+    const { files } = e.target;
+    files[0] && setFile(files[0]);
+  };
+
+  const onSubmit = async (e: any) => {
     e.preventDefault();
     if (!inputs.title || !inputs.content || isLoading) return;
 
     setIsLoading(true);
+
+    try {
+      const post = await createPost(inputs);
+      file && (await uploadFile(post.id, file));
+      setNotitext(post.id + " is created!");
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 500);
+    } catch (e) {
+      console.warn(e);
+    } finally {
+      setIsLoading(false);
+      setInputs(initState);
+      setFile(null);
+    }
   };
 
   return (
@@ -51,11 +75,10 @@ export const CreatPost = () => {
             />
             <Input
               type="file"
-              name="file"
               size="md"
               placeholder="Upload"
               required
-              value={inputs.file}
+              onChange={onFileChange}
               sx={{ padding: "5px" }}
             />
 
@@ -65,6 +88,10 @@ export const CreatPost = () => {
           </Container>
         </form>
       </Container>
+
+      <Snackbar open={Boolean(notiText)} variant="soft" color="success">
+        {notiText}
+      </Snackbar>
     </Layout>
   );
 };
