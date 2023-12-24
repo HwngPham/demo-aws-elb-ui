@@ -6,7 +6,7 @@ import { NotFound } from "./pages/NotFound";
 export const App = () => {
   const routes: Record<string, any> = {
     "/": ListPost,
-    "/create-post": EditPost,
+    "/edit-post": EditPost,
     "/new-post": CreatPost,
   };
 
