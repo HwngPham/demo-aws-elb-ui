@@ -1,3 +1,8 @@
 export const NotFound = () => {
-  return <p>404</p>;
+  return (
+    <div>
+      <p>404</p>
+      <a href="/">Go back</a>
+    </div>
+  );
 };
