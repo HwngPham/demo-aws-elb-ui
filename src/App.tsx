@@ -1,7 +1,15 @@
-import "./App.css";
+import { CreatPost } from "./pages/CreatePost";
+import { EditPost } from "./pages/EditPost";
+import { ListPost } from "./pages/ListPost";
+import { NotFound } from "./pages/NotFound";
 
-function App() {
-  return <div>barhaha</div>;
-}
+export const App = () => {
+  const routes: Record<string, any> = {
+    "/": ListPost,
+    "/create-post": EditPost,
+    "/new-post": CreatPost,
+  };
 
-export default App;
+  const Component = routes[window.location.pathname] ?? NotFound;
+  return <Component />;
+};
