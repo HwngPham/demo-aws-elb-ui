@@ -3,19 +3,20 @@ import { Post, sortByCreatedAt } from "../utils";
 import { Layout } from "../components/Layout";
 import { getDetailPost } from "../services";
 import { Box, Container, Stack, Typography } from "@mui/joy";
+import { useNavigate } from "react-router-dom";
 
 export const EditPost = () => {
+  const navigate = useNavigate();
   const [post, setPost] = useState<Post>();
 
   useEffect(() => {
-    console.log(window.location.href);
     const queryParams = new URLSearchParams(window.location.search);
     const postId = queryParams.get("id") ?? "";
 
     getDetailPost(postId)
       .then(setPost)
-      .catch(() => (window.location.href = "/"));
-  }, []);
+      .catch(() => navigate("/"));
+  }, [navigate]);
 
   return (
     <Layout>

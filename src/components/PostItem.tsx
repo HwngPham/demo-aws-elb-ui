@@ -6,6 +6,7 @@ import {
   CardContent,
   Typography,
 } from "@mui/joy";
+import { Link } from "react-router-dom";
 import { Post } from "../utils/types";
 import { sortByCreatedAt } from "../utils";
 
@@ -39,7 +40,7 @@ export const PostItem = ({
         </div>
 
         <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
-          <a href={`/edit-post?id=${id}`}>
+          <Link to={`/edit-post?id=${id}`}>
             <Button
               variant="solid"
               size="md"
@@ -49,7 +50,7 @@ export const PostItem = ({
             >
               Show
             </Button>
-          </a>
+          </Link>
 
           <Button
             variant="solid"

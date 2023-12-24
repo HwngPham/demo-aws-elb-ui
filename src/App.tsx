@@ -1,15 +1,16 @@
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { CreatPost } from "./pages/CreatePost";
 import { EditPost } from "./pages/EditPost";
 import { ListPost } from "./pages/ListPost";
-import { NotFound } from "./pages/NotFound";
 
 export const App = () => {
-  const routes: Record<string, any> = {
-    "/": ListPost,
-    "/edit-post": EditPost,
-    "/new-post": CreatPost,
-  };
-
-  const Component = routes[window.location.pathname] ?? NotFound;
-  return <Component />;
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<ListPost />} />
+        <Route path="/edit-post" element={<EditPost />} />
+        <Route path="/new-post" element={<CreatPost />} />
+      </Routes>
+    </Router>
+  );
 };

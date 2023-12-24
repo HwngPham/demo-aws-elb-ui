@@ -2,6 +2,7 @@ import { Button, CircularProgress, Container, Input, Snackbar } from "@mui/joy";
 import { useState } from "react";
 import { Layout } from "../components/Layout";
 import { createPost, uploadFile } from "../services";
+import { useNavigate } from "react-router-dom";
 
 const initState = {
   title: "",
@@ -9,6 +10,7 @@ const initState = {
 };
 
 export const CreatPost = () => {
+  const navigate = useNavigate();
   const [inputs, setInputs] = useState<Record<string, any>>(initState);
   const [file, setFile] = useState<File | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -32,11 +34,12 @@ export const CreatPost = () => {
 
     try {
       const post = await createPost(inputs);
-      file && (await uploadFile(post.id, file));
-      setNotitext(post.id + " is created!");
-      setTimeout(() => {
-        window.location.href = "/";
-      }, 500);
+
+      if (post?.id) {
+        if (file) await uploadFile(post.id, file);
+        setNotitext(post.id + " is created!");
+        setTimeout(() => navigate("/"), 500);
+      }
     } catch (e) {
       console.warn(e);
     } finally {

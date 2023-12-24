@@ -17,15 +17,27 @@ dependencies:
   "@mui/joy":
     specifier: 5.0.0-beta.19
     version: 5.0.0-beta.19(@emotion/react@11.11.3)(@emotion/styled@11.11.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)
+  localforage:
+    specifier: ^1.10.0
+    version: 1.10.0
+  match-sorter:
+    specifier: ^6.3.1
+    version: 6.3.1
   react:
     specifier: ^18.2.0
     version: 18.2.0
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
+  react-router-dom:
+    specifier: ^6.21.1
+    version: 6.21.1(react-dom@18.2.0)(react@18.2.0)
   serve:
     specifier: ^14.2.1
     version: 14.2.1
+  sort-by:
+    specifier: ^1.2.0
+    version: 1.2.0
 
 devDependencies:
   "@types/react":
@@ -1197,6 +1209,14 @@ packages:
       {
         integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==,
       }
+    dev: false
+
+  /@remix-run/router@1.14.1:
+    resolution:
+      {
+        integrity: sha512-Qg4DMQsfPNAs88rb2xkdk03N3bjK4jgX5fR24eHCTR9q6PrhZQZ4UJBPzCHJkIpTRN1UKxx2DzjZmnC+7Lj0Ow==,
+      }
+    engines: { node: ">=14.0.0" }
     dev: false
 
   /@rollup/rollup-android-arm-eabi@4.9.1:
@@ -2742,6 +2762,13 @@ packages:
     engines: { node: ">= 4" }
     dev: true
 
+  /immediate@3.0.6:
+    resolution:
+      {
+        integrity: sha512-XXOFtyqDjNDAQxVfYxuF7g9Il/IbWmmlQg2MYKOH8ExIT1qg6xc4zyS3HaEEATgs1btfzxq15ciUiY7gjSXRGQ==,
+      }
+    dev: false
+
   /import-fresh@3.3.0:
     resolution:
       {
@@ -2998,6 +3025,15 @@ packages:
       type-check: 0.4.0
     dev: true
 
+  /lie@3.1.1:
+    resolution:
+      {
+        integrity: sha512-RiNhHysUjhrDQntfYSfY4MU24coXXdEOgw9WGcKHNeEwffDYbF//u87M1EWaMGzuFoSbqW0C9C6lEEhDOAswfw==,
+      }
+    dependencies:
+      immediate: 3.0.6
+    dev: false
+
   /lilconfig@3.0.0:
     resolution:
       {
@@ -3049,6 +3085,15 @@ packages:
       rfdc: 1.3.0
       wrap-ansi: 9.0.0
     dev: true
+
+  /localforage@1.10.0:
+    resolution:
+      {
+        integrity: sha512-14/H1aX7hzBBmmh7sGPd+AOMkkIrHM3Z1PAyGgZigA1H1p5O5ANnMyWzvpAETtG68/dC4pC0ncy3+PPGzXZHPg==,
+      }
+    dependencies:
+      lie: 3.1.1
+    dev: false
 
   /locate-path@6.0.0:
     resolution:
@@ -3109,6 +3154,16 @@ packages:
     dependencies:
       yallist: 4.0.0
     dev: true
+
+  /match-sorter@6.3.1:
+    resolution:
+      {
+        integrity: sha512-mxybbo3pPNuA+ZuCUhm5bwNkXrJTbsk5VWbR5wiwz/GC6LIiegBGn2w3O08UG/jdbYLinw51fSQ5xNU1U3MgBw==,
+      }
+    dependencies:
+      "@babel/runtime": 7.23.6
+      remove-accents: 0.4.2
+    dev: false
 
   /merge-stream@2.0.0:
     resolution:
@@ -3272,6 +3327,14 @@ packages:
         integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==,
       }
     engines: { node: ">=0.10.0" }
+    dev: false
+
+  /object-path@0.6.0:
+    resolution:
+      {
+        integrity: sha512-fxrwsCFi3/p+LeLOAwo/wyRMODZxdGBtUlWRzsEpsUVrisZbEfZ21arxLGfaWfcnqb8oHPNihIb4XPE8CQPN5A==,
+      }
+    engines: { node: ">=0.8.0" }
     dev: false
 
   /on-headers@1.0.2:
@@ -3567,6 +3630,35 @@ packages:
     engines: { node: ">=0.10.0" }
     dev: true
 
+  /react-router-dom@6.21.1(react-dom@18.2.0)(react@18.2.0):
+    resolution:
+      {
+        integrity: sha512-QCNrtjtDPwHDO+AO21MJd7yIcr41UetYt5jzaB9Y1UYaPTCnVuJq6S748g1dE11OQlCFIQg+RtAA1SEZIyiBeA==,
+      }
+    engines: { node: ">=14.0.0" }
+    peerDependencies:
+      react: ">=16.8"
+      react-dom: ">=16.8"
+    dependencies:
+      "@remix-run/router": 1.14.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      react-router: 6.21.1(react@18.2.0)
+    dev: false
+
+  /react-router@6.21.1(react@18.2.0):
+    resolution:
+      {
+        integrity: sha512-W0l13YlMTm1YrpVIOpjCADJqEUpz1vm+CMo47RuFX4Ftegwm6KOYsL5G3eiE52jnJpKvzm6uB/vTKTPKM8dmkA==,
+      }
+    engines: { node: ">=14.0.0" }
+    peerDependencies:
+      react: ">=16.8"
+    dependencies:
+      "@remix-run/router": 1.14.1
+      react: 18.2.0
+    dev: false
+
   /react@18.2.0:
     resolution:
       {
@@ -3602,6 +3694,13 @@ packages:
     engines: { node: ">=0.10.0" }
     dependencies:
       rc: 1.2.8
+    dev: false
+
+  /remove-accents@0.4.2:
+    resolution:
+      {
+        integrity: sha512-7pXIJqJOq5tFgG1A2Zxti3Ht8jJF337m4sowbuHsW30ZnkQFnDzy9qBNhgzX8ZLW4+UBcXiiR7SwR6pokHsxiA==,
+      }
     dev: false
 
   /require-from-string@2.0.2:
@@ -3840,6 +3939,15 @@ packages:
       ansi-styles: 6.2.1
       is-fullwidth-code-point: 5.0.0
     dev: true
+
+  /sort-by@1.2.0:
+    resolution:
+      {
+        integrity: sha512-aRyW65r3xMnf4nxJRluCg0H/woJpksU1dQxRtXYzau30sNBOmf5HACpDd9MZDhKh7ALQ5FgSOfMPwZEtUmMqcg==,
+      }
+    dependencies:
+      object-path: 0.6.0
+    dev: false
 
   /source-map-js@1.0.2:
     resolution:
