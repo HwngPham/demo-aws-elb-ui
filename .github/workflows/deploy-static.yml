@@ -28,3 +28,6 @@ jobs:
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: ${{ vars.AWS_REGION }}
           flags: --recursive
+
+      - name: Finish
+        run: echo "Website is available at ${{ vars.PUBLIC_URL }}"
