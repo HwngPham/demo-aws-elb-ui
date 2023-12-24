@@ -16,7 +16,7 @@ jobs:
           node-version: "20.x"
 
       - name: Add API endpoint
-        run: echo VITE_BASE_URL=${ vars.API_DOMAIN } > .env
+        run: echo "VITE_BASE_URL=${{ vars.API_DOMAIN }}" > .env
 
       - name: Build asset
         run: npm install && npm run build
