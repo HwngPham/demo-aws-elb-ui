@@ -13,6 +13,6 @@ export const createPost = async (payload: Record<string, any>) => {
     return data.result ?? {};
   } catch (e) {
     console.error(e);
-    return null;
+    return {};
   }
 };

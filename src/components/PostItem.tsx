@@ -1,8 +1,25 @@
-import { AspectRatio, Button, Card, CardContent, Typography } from "@mui/joy";
+import {
+  AspectRatio,
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Typography,
+} from "@mui/joy";
 import { Post } from "../utils/types";
 import { sortByCreatedAt } from "../utils";
 
-export const PostItem = ({ id, content, title, images }: Post) => {
+interface PostItemProps extends Post {
+  onDelete: (postId: string) => void;
+}
+
+export const PostItem = ({
+  id,
+  content,
+  title,
+  images,
+  onDelete,
+}: PostItemProps) => {
   const latestImage = sortByCreatedAt(images ?? [])[0]?.url;
 
   return (
@@ -21,17 +38,30 @@ export const PostItem = ({ id, content, title, images }: Post) => {
           <Typography level="body-xs">{content}</Typography>
         </div>
 
-        <a href={`/edit-post?id=${id}`}>
+        <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
+          <a href={`/edit-post?id=${id}`}>
+            <Button
+              variant="solid"
+              size="md"
+              color="primary"
+              aria-label="Explore Bahamas Islands"
+              sx={{ ml: "auto", alignSelf: "center", fontWeight: 600 }}
+            >
+              Show
+            </Button>
+          </a>
+
           <Button
             variant="solid"
             size="md"
-            color="primary"
+            color="danger"
             aria-label="Explore Bahamas Islands"
             sx={{ ml: "auto", alignSelf: "center", fontWeight: 600 }}
+            onClick={() => onDelete(id)}
           >
-            Show
+            Delete
           </Button>
-        </a>
+        </Box>
       </CardContent>
     </Card>
   );
