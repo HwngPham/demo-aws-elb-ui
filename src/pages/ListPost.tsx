@@ -28,7 +28,6 @@ export const ListPost = () => {
   return (
     <Layout>
       <Container sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
-        hehe
         {sortByCreatedAt(allPost).map((post) => (
           <PostItem key={post.id} {...post} onDelete={handleDeletePost} />
         ))}
